@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
-import { ChatProvider, useChat } from '../../contexts/ChatContext';
-import ChatSidebar from '../../components/features/chat/ChatSidebar';
-import MessageList from '../../components/features/chat/MessageList';
-import MessageInput from '../../components/features/chat/MessageInput';
+import { ChatProvider, useChat } from '../contexts/ChatContext';
+import ChatSidebar from '../components/features/chat/ChatSidebar';
+import MessageList from '../components/features/chat/MessageList';
+import MessageInput from '../components/features/chat/MessageInput';
 
 // Sample data for demo (will be replaced by API)
 const sampleChannels = [
