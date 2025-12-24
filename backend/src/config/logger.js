@@ -41,28 +41,34 @@ const fileFormat = winston.format.combine(
     winston.format.json()
 );
 
-// Transports
+// Transports - Only use console in production (Vercel has read-only filesystem)
+const isProduction = process.env.NODE_ENV === 'production';
+
 const transports = [
     // Console (always)
     new winston.transports.Console({ format }),
-
-    // Error file
-    new winston.transports.File({
-        filename: path.join(__dirname, '../../logs/error.log'),
-        level: 'error',
-        format: fileFormat,
-        maxsize: 5242880, // 5MB
-        maxFiles: 5,
-    }),
-
-    // Combined file
-    new winston.transports.File({
-        filename: path.join(__dirname, '../../logs/combined.log'),
-        format: fileFormat,
-        maxsize: 5242880,
-        maxFiles: 5,
-    }),
 ];
+
+// Only add file transports in development (not on serverless platforms like Vercel)
+if (!isProduction) {
+    transports.push(
+        // Error file
+        new winston.transports.File({
+            filename: path.join(__dirname, '../../logs/error.log'),
+            level: 'error',
+            format: fileFormat,
+            maxsize: 5242880, // 5MB
+            maxFiles: 5,
+        }),
+        // Combined file
+        new winston.transports.File({
+            filename: path.join(__dirname, '../../logs/combined.log'),
+            format: fileFormat,
+            maxsize: 5242880,
+            maxFiles: 5,
+        })
+    );
+}
 
 // Create logger
 const logger = winston.createLogger({
