@@ -41,8 +41,9 @@ const fileFormat = winston.format.combine(
     winston.format.json()
 );
 
-// Transports - Only use console in production (Vercel has read-only filesystem)
-const isProduction = process.env.NODE_ENV === 'production';
+// Transports - Only use console in production/serverless (Vercel has read-only filesystem)
+// Check for VERCEL env var which is auto-set by Vercel, or NODE_ENV production
+const isServerless = process.env.VERCEL || process.env.NODE_ENV === 'production';
 
 const transports = [
     // Console (always)
@@ -50,7 +51,7 @@ const transports = [
 ];
 
 // Only add file transports in development (not on serverless platforms like Vercel)
-if (!isProduction) {
+if (!isServerless) {
     transports.push(
         // Error file
         new winston.transports.File({
