@@ -1,0 +1,210 @@
+/* Mobile-first responsive utilities */
+
+/* Breakpoints */
+:root {
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+}
+
+/* Mobile-first container */
+.container-mobile {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container-mobile {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container-mobile {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+/* Hide on mobile */
+.hide-mobile {
+    display: none !important;
+}
+
+@media (min-width: 768px) {
+    .hide-mobile {
+        display: block !important;
+    }
+}
+
+/* Show only on mobile */
+.show-mobile {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .show-mobile {
+        display: none !important;
+    }
+}
+
+/* Mobile navigation */
+.mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(100, 116, 139, 0.2);
+    padding: 0.5rem 1rem;
+    padding-bottom: env(safe-area-inset-bottom, 0.5rem);
+    z-index: 50;
+}
+
+@media (min-width: 768px) {
+    .mobile-nav {
+        display: none;
+    }
+}
+
+/* Mobile menu button */
+.mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    color: rgba(148, 163, 184, 1);
+    font-size: 0.625rem;
+    transition: color 0.2s;
+}
+
+.mobile-menu-btn.active {
+    color: rgba(99, 102, 241, 1);
+}
+
+.mobile-menu-btn svg,
+.mobile-menu-btn span:first-child {
+    font-size: 1.25rem;
+}
+
+/* Touch-friendly tap targets */
+.tap-target {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Swipe gestures area */
+.swipe-area {
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile card adjustments */
+@media (max-width: 767px) {
+
+    .glass-card,
+    .glass-panel {
+        border-radius: 0.75rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9375rem;
+    }
+
+    .input-field {
+        font-size: 1rem;
+        /* Prevents zoom on iOS */
+        padding: 0.75rem;
+    }
+}
+
+/* Safe area padding for notch devices */
+.safe-top {
+    padding-top: env(safe-area-inset-top, 0);
+}
+
+.safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* Pull-to-refresh indicator */
+.pull-indicator {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    background: rgba(99, 102, 241, 0.9);
+    color: white;
+    border-radius: 0 0 0.5rem 0.5rem;
+    font-size: 0.75rem;
+    z-index: 60;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.pull-indicator.visible {
+    opacity: 1;
+}
+
+/* Optimized animations for mobile */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Skeleton loading */
+.skeleton {
+    background: linear-gradient(90deg,
+            rgba(51, 65, 85, 0.3) 25%,
+            rgba(51, 65, 85, 0.5) 50%,
+            rgba(51, 65, 85, 0.3) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s infinite;
+    border-radius: 0.375rem;
+}
+
+@keyframes skeleton-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Skeleton text */
+.skeleton-text {
+    height: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.skeleton-text.sm {
+    height: 0.75rem;
+}
+
+.skeleton-text.lg {
+    height: 1.25rem;
+}
+
+/* Skeleton avatar */
+.skeleton-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+}
