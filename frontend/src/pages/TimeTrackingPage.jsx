@@ -1,9 +1,9 @@
 import { useState, useCallback, useMemo } from 'react';
-import DashboardLayout from '../../components/layout/DashboardLayout';
-import TimerWidget from '../../components/features/time/TimerWidget';
-import ManualEntryForm from '../../components/features/time/ManualEntryForm';
-import WeeklySummary from '../../components/features/time/WeeklySummary';
-import TimeEntryList from '../../components/features/time/TimeEntryList';
+import DashboardLayout from '../components/layout/DashboardLayout';
+import TimerWidget from '../components/features/time/TimerWidget';
+import ManualEntryForm from '../components/features/time/ManualEntryForm';
+import WeeklySummary from '../components/features/time/WeeklySummary';
+import TimeEntryList from '../components/features/time/TimeEntryList';
 
 // Sample tasks
 const sampleTasks = [

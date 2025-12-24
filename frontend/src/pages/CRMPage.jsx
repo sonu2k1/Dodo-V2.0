@@ -1,9 +1,9 @@
 import { useState, useMemo, useCallback } from 'react';
-import DashboardLayout from '../../components/layout/DashboardLayout';
-import LeadKanban from '../../components/features/crm/LeadKanban';
-import LeadList from '../../components/features/crm/LeadList';
-import LeadForm from '../../components/features/crm/LeadForm';
-import AISmartSummary from '../../components/features/crm/AISmartSummary';
+import DashboardLayout from '../components/layout/DashboardLayout';
+import LeadKanban from '../components/features/crm/LeadKanban';
+import LeadList from '../components/features/crm/LeadList';
+import LeadForm from '../components/features/crm/LeadForm';
+import AISmartSummary from '../components/features/crm/AISmartSummary';
 
 // Sample leads data
 const sampleLeads = [

@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
-import DashboardLayout from '../../components/layout/DashboardLayout';
-import FileManager from '../../components/features/files/FileManager';
+import DashboardLayout from '../components/layout/DashboardLayout';
+import FileManager from '../components/features/files/FileManager';
 
 // Sample files data
 const sampleFiles = [
@@ -102,8 +102,8 @@ export default function FilesPage() {
                                 <div
                                     key={client.id}
                                     className={`p-3 rounded-lg cursor-pointer transition-all ${selectedClient?.id === client.id
-                                            ? 'bg-indigo-600/20 border border-indigo-500/50'
-                                            : 'hover:bg-slate-800'
+                                        ? 'bg-indigo-600/20 border border-indigo-500/50'
+                                        : 'hover:bg-slate-800'
                                         }`}
                                     onClick={() => setSelectedClient(client)}
                                 >
